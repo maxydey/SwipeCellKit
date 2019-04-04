@@ -208,7 +208,9 @@ class SwipeController: NSObject {
             if visibleSwipeableRect.isNull == false {
                 let top = visibleSwipeableRect.minY > frame.minY ? max(0, visibleSwipeableRect.minY - frame.minY) : 0
                 let bottom = max(0, frame.size.height - visibleSwipeableRect.size.height - top)
-                contentEdgeInsets = UIEdgeInsets(top: top, left: 0, bottom: bottom, right: 0)
+                let left = visibleSwipeableRect.minX
+                let right = left
+                contentEdgeInsets = UIEdgeInsets(top: top, left: left, bottom: bottom, right: right)
             }
         }
         
@@ -222,9 +224,9 @@ class SwipeController: NSObject {
         
         actionsContainerView.addSubview(actionsView)
         
-        actionsView.heightAnchor.constraint(equalTo: swipeable.heightAnchor).isActive = true
+        actionsView.bottomAnchor.constraint(equalTo: swipeable.bottomAnchor, constant: -swipeable.insets.bottom).isActive = true
         actionsView.widthAnchor.constraint(equalTo: swipeable.widthAnchor, multiplier: 2).isActive = true
-        actionsView.topAnchor.constraint(equalTo: swipeable.topAnchor).isActive = true
+        actionsView.topAnchor.constraint(equalTo: swipeable.topAnchor, constant: swipeable.insets.top).isActive = true
         
         if orientation == .left {
             actionsView.rightAnchor.constraint(equalTo: actionsContainerView.leftAnchor).isActive = true

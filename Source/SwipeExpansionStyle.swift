@@ -88,7 +88,7 @@ public struct SwipeExpansionStyle {
         guard let actionsView = view.actionsView, let gestureView = gesture.view else { return false }
         guard abs(gesture.translation(in: gestureView).x) > minimumExpansionTranslation else { return false }
     
-        let xDelta = floor(abs(frame?.minX ?? view.frame.minX))
+        let xDelta = abs(frame?.minX ?? view.frame.minX)
         if xDelta <= actionsView.preferredWidth {
             return false
         } else if xDelta > targetOffset(for: view) {

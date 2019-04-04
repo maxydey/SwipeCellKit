@@ -20,6 +20,9 @@ open class SwipeCollectionViewCell: UICollectionViewCell {
     
     var state = SwipeState.center
     var actionsView: SwipeActionsView?
+
+    open var insets: UIEdgeInsets  { return .zero }
+
     var scrollView: UIScrollView? {
         return collectionView
     }

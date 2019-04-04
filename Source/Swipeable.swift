@@ -21,6 +21,7 @@ protocol Swipeable {
     var indexPath: IndexPath? { get }
     
     var panGestureRecognizer: UIGestureRecognizer { get }
+    var insets: UIEdgeInsets { get }
 }
 
 extension SwipeTableViewCell: Swipeable {}
