@@ -359,12 +359,13 @@ extension SwipeController: UIGestureRecognizerDelegate {
             })
             return swipedCell == nil ? false : true
         }
-        
+
         if gestureRecognizer == panGestureRecognizer,
             let view = gestureRecognizer.view,
             let gestureRecognizer = gestureRecognizer as? UIPanGestureRecognizer {
+
             let translation = gestureRecognizer.translation(in: view)
-            return abs(translation.y) <= abs(translation.x)
+            return abs(translation.y) <= abs(translation.x) && gestureRecognizer.location(in: swipeable).x > 24
         }
         
         return true
